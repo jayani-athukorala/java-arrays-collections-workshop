@@ -105,14 +105,24 @@ public class Menu {
                     """);
         IO.print("Choose Option : ");
         int deleteOption = Utility.validateInt(0, 3);
-        boolean deleteStatus;
-        if(deleteOption == 1){
-            IO.println("Enter nameof the contact you want to delete.....");
-            String name = Utility.validateName();
-            deleteStatus = ContactOperations.deleteByName(name);
-        }else{
-            String mobile = Utility.validateTelephoneNumber();
-            deleteStatus = ContactOperations.deleteByTelephoneNumber(mobile);
+
+        if (deleteOption == 0) {
+            return; // return to main menu
+        }
+        boolean deleteStatus = false;
+        switch (deleteOption){
+            case 1:
+                IO.println("Enter name of the contact you want to delete.....");
+                String name = Utility.validateName();
+                deleteStatus = ContactOperations.deleteByName(name);
+                break;
+            case 2:
+                IO.println("Enter number of the contact you want to delete.....");
+                String mobile = Utility.validateTelephoneNumber();
+                deleteStatus = ContactOperations.deleteByTelephoneNumber(mobile);
+                break;
+            default:
+                break;
         }
 
         if(deleteStatus){

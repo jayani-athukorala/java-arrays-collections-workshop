@@ -10,12 +10,12 @@
 
 ---
 
-## 📌 Exercise Document
+## 📌 Workshop Document
 
 
 You can find the workshop description here:
 
-[Wrorshop Document](Arrays-Collections-Workshop.md)
+[Workshop Document](Arrays-Collections-Workshop.md)
 
 ---
 
