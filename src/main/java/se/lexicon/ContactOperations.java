@@ -19,7 +19,7 @@ public class ContactOperations {
     // =========================
     // Add New Contact
     // =========================
-    public boolean addContact(String name, String mobile) {
+    public static boolean addContact(String name, String mobile) {
 
         contacts.put(name, mobile);
         return true;
@@ -98,6 +98,38 @@ public class ContactOperations {
             return true;
         }
 
+        return false;
+    }
+
+    // =========================
+    // Update Contact Name
+    // =========================
+    public static boolean updateName(String currentName, String newName) {
+
+        if (!contacts.containsKey(currentName)) {
+            return false;
+        }
+
+        String telephone = contacts.get(currentName);
+
+        contacts.remove(currentName);
+        contacts.put(newName, telephone);
+
+        return true;
+    }
+
+    // =========================
+    // Update Contact Number
+    // =========================
+    public static boolean updateTelephoneNumber(String currentMobile, String newMobile) {
+
+        for (Map.Entry<String, String> contact : contacts.entrySet()) {
+
+            if (contact.getValue().equals(currentMobile)) {
+                contact.setValue(newMobile);
+                return true;
+            }
+        }
         return false;
     }
 }

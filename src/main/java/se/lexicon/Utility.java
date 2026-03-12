@@ -23,11 +23,11 @@ public class Utility {
         return option;
     }
 
-    public static String validateName() {
+    public static String validateName(String type) {
         String name;
 
         while (true) {
-            System.out.print("Enter Contact Name: ");
+            System.out.print("Enter "+type+" Name: ");
             name = scanner.nextLine().trim();
 
             // Check if name is empty or contains invalid characters
@@ -40,10 +40,10 @@ public class Utility {
         return name;
     }
 
-    public static String validateTelephoneNumber() {
+    public static String validateTelephoneNumber(String type) {
         String phone;
         while (true) {
-            System.out.print("Enter Telephone Number: ");
+            System.out.print("Enter "+type+" Number: ");
             phone = scanner.nextLine().trim();
 
             // Check if phone is digits only and 7-15 characters long
@@ -54,5 +54,18 @@ public class Utility {
             }
         }
         return phone;
+    }
+
+    public static char validateYesNo(String type) {
+        while (true) {
+            IO.print("Are you sure you want to "+type+" above contact/s ? (y/n) : ");
+            String input = scanner.next().trim().toUpperCase();
+
+            if (input.equals("Y") || input.equals("N")) {
+                return input.charAt(0);
+            }
+
+            IO.println("Invalid input!");
+        }
     }
 }

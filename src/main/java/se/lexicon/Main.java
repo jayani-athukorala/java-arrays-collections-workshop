@@ -8,26 +8,14 @@ public class Main {
             chosenOption = Menu.displayMenu();
 
             switch (chosenOption) {
-                case 1:
-                    Menu.addContactMenu();
-                    break;
-                case 2:
-                    Menu.search("Name");
-                    break;
-                case 3:
-                    Menu.search("Mobile");
-                    break;
-                case 4:
-                    Menu.displayAllContacts();
-                    break;
-                case 5:
-                    Menu.sortContacts();
-                    break;
-                case 6:
-                    Menu.deleteContact();
-                    break;
-                default:
-                    IO.println("Exiting application...");
+                case 1 -> Menu.addContactMenu();
+                case 2 -> Menu.search("Name");
+                case 3 -> Menu.search("Mobile");
+                case 4 -> Menu.displayAllContacts();
+                case 5 -> Menu.sortContacts();
+                case 6 -> Menu.deleteContact();
+                case 7 -> Menu.updateContact();
+                default -> IO.println("Exiting application...");
             }
             if (chosenOption != 0) {
                 pressEnterToContinue();
