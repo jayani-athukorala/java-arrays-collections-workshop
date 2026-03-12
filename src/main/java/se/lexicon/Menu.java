@@ -7,12 +7,12 @@ public class Menu {
     static int displayMenu(){
         IO.print("""
                     ======== Contact Management App ========
-                    1. Add New Contact
+                    1. Add new Contact
                     2. Search by Name
                     3. Search by Mobile
                     4. Display All Contacts
-                    5. Sort Contacts By Name
-                    6. Delete a Contact
+                    5. Sort Contacts by Name
+                    6. Delete Contact
                     0. Exit
                     ========================================
                     """);
@@ -22,7 +22,6 @@ public class Menu {
 
     static void addContactMenu() {
         String name = Utility.validateName();
-
         String phone = Utility.validateTelephoneNumber();
 
         ContactOperations contactOperations = new ContactOperations();
@@ -96,14 +95,8 @@ public class Menu {
     }
 
     public static void deleteContact(){
-        IO.print("""
-                    ============ Delete Contact ============
-                    1. Delete Contact By Name
-                    2. Delete Contact by Mobile Number
-                    0. Back to Menu
-                    ========================================
-                    """);
-        IO.print("Choose Option : ");
+
+        displaySubMenu();
         int deleteOption = Utility.validateInt(0, 3);
 
         if (deleteOption == 0) {
@@ -130,5 +123,16 @@ public class Menu {
         }else{
             IO.println("Unsuccessful deleting attempt!");
         }
+    }
+
+    public static void displaySubMenu(){
+        IO.print("""
+                    ============ Delete Contact ============
+                    1. Delete Contact By Name
+                    2. Delete Contact by Mobile Number
+                    0. Back to Menu
+                    ========================================
+                    """);
+        IO.print("Choose Option : ");
     }
 }

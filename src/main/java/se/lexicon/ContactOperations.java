@@ -84,6 +84,20 @@ public class ContactOperations {
     // Delete Contact by Mobile Number
     // =========================
     public static boolean deleteByTelephoneNumber(String mobile) {
-        return true;
+        String keyToRemove = null;
+
+        for (Map.Entry<String,String> entry : contacts.entrySet()) { //Loop through the map get the key
+            if (entry.getValue().equals(mobile)) {
+                keyToRemove = entry.getKey();
+                break;
+            }
+        }
+
+        if (keyToRemove != null) {
+            contacts.remove(keyToRemove);
+            return true;
+        }
+
+        return false;
     }
 }
