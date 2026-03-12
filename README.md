@@ -3,7 +3,7 @@
 ## 🛠  How to Run :
 1. Clone the Repository
     ```bash
-    git clone https://github.com/jayani-athukorala/java-collections-exercise.git
+    git clone https://github.com/jayani-athukorala/java-arrays-collections-workshop.git
     ```
 2. Open the project in preferred IDE.
 3. Buld and Run ```Main.java```
