@@ -2,6 +2,7 @@ package se.lexicon;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ContactOperations {
 
@@ -57,5 +58,12 @@ public class ContactOperations {
         }
 
         return result; // empty map if no match
+    }
+
+    // =========================
+    // Sort Contacts
+    // =========================
+    public static Map<String, String> getSortedContacts() {
+        return new TreeMap<>(contacts);
     }
 }

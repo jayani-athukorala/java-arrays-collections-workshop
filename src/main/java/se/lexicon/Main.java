@@ -20,6 +20,9 @@ public class Main {
                 case 4:
                     Menu.displayAllContacts();
                     break;
+                case 5:
+                    Menu.sortContacts();
+                    break;
                 default:
                     IO.println("Exiting application...");
             }
