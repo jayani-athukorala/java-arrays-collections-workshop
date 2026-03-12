@@ -46,13 +46,13 @@ public class ContactOperations {
     // =========================
     public static Map<String, String> searchByMobile(String searchQuery) {
         Map<String, String> result = new HashMap<>();
-        searchQuery = searchQuery.trim();
+
         for (Map.Entry<String, String> entry : contacts.entrySet()) {
             String name = entry.getKey();
-            String mobile = entry.getValue().trim();
-            IO.println(name+mobile);
-            if (mobile.contains(searchQuery)) {
-                result.put(name, mobile);
+            String mobile = entry.getValue(); // remove spaces from stored number
+
+            if (mobile.equals(searchQuery)) {
+                result.put(name, mobile); // add match to result map
             }
         }
 

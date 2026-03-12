@@ -66,16 +66,13 @@ public class Menu {
         }
 
         if (contacts.isEmpty()) {
-            System.out.println("No contacts found matching \"" + searchQuery + "\"");
+            IO.println("No contacts found matching \"" + searchQuery + "\"");
         }else {
             System.out.println("\n=== Search Results for "+type+" = "+searchQuery+" ===");
             for (Map.Entry<String, String> entry : contacts.entrySet()) {
                 String name = entry.getKey();
                 String mobile = entry.getValue();
-
-                if (name.toLowerCase().contains(searchQuery.toLowerCase())) {
-                    System.out.println(name + " (" + mobile + ")");
-                }
+                IO.println(name + " (" + mobile + ")");
             }
         }
     }

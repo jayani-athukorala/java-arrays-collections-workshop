@@ -7,7 +7,6 @@ public class Main {
         do {
             chosenOption = Menu.displayMenu();
 
-            boolean stataus;
             switch (chosenOption) {
                 case 1:
                     Menu.addContactMenu();
@@ -21,8 +20,12 @@ public class Main {
                 case 4:
                     Menu.displayAllContacts();
                     break;
+                default:
+                    IO.println("Exiting application...");
             }
-            pressEnterToContinue();
+            if (chosenOption != 0) {
+                pressEnterToContinue();
+            }
         }while (chosenOption != 0); //Repeat until Exit is selected.
     }
 
