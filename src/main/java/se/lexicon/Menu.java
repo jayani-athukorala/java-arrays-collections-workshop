@@ -12,11 +12,12 @@ public class Menu {
                     3. Search by Mobile
                     4. Display All Contacts
                     5. Sort Contacts By Name
+                    6. Delete a Contact
                     0. Exit
                     ========================================
                     """);
         IO.print("Choose Option : ");
-        return Utility.validateInt(0, 5);
+        return Utility.validateInt(0, 6);
     }
 
     static void addContactMenu() {
@@ -91,6 +92,33 @@ public class Menu {
                 String mobile = entry.getValue();
                 IO.println(name + " (" + mobile + ")");
             }
+        }
+    }
+
+    public static void deleteContact(){
+        IO.print("""
+                    ============ Delete Contact ============
+                    1. Delete Contact By Name
+                    2. Delete Contact by Mobile Number
+                    0. Back to Menu
+                    ========================================
+                    """);
+        IO.print("Choose Option : ");
+        int deleteOption = Utility.validateInt(0, 3);
+        boolean deleteStatus;
+        if(deleteOption == 1){
+            IO.println("Enter nameof the contact you want to delete.....");
+            String name = Utility.validateName();
+            deleteStatus = ContactOperations.deleteByName(name);
+        }else{
+            String mobile = Utility.validateTelephoneNumber();
+            deleteStatus = ContactOperations.deleteByTelephoneNumber(mobile);
+        }
+
+        if(deleteStatus){
+            IO.println("Contact Successfully Deleted!");
+        }else{
+            IO.println("Unsuccessful deleting attempt!");
         }
     }
 }

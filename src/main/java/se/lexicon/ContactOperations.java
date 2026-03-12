@@ -66,4 +66,24 @@ public class ContactOperations {
     public static Map<String, String> getSortedContacts() {
         return new TreeMap<>(contacts);
     }
+
+    // =========================
+    // Delete Contact by Name
+    // =========================
+    public static boolean deleteByName(String name) {
+
+        if (contacts.containsKey(name)) {
+            contacts.remove(name);
+            return true;
+        }
+
+        return false;
+    }
+
+    // =========================
+    // Delete Contact by Mobile Number
+    // =========================
+    public static boolean deleteByTelephoneNumber(String mobile) {
+        return true;
+    }
 }

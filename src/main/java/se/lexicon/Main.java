@@ -23,6 +23,9 @@ public class Main {
                 case 5:
                     Menu.sortContacts();
                     break;
+                case 6:
+                    Menu.deleteContact();
+                    break;
                 default:
                     IO.println("Exiting application...");
             }
