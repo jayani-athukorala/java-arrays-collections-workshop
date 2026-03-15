@@ -1,7 +1,12 @@
 package se.lexicon;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 public class ContactOperations {
@@ -50,14 +55,14 @@ public class ContactOperations {
 
         for (Map.Entry<String, String> entry : contacts.entrySet()) {
             String name = entry.getKey();
-            String mobile = entry.getValue(); // remove spaces from stored number
+            String mobile = entry.getValue();
 
-            if (mobile.equals(searchQuery)) {
-                result.put(name, mobile); // add match to result map
+            if (Objects.equals(mobile, searchQuery)) {
+                result.put(name, mobile);
             }
         }
 
-        return result; // empty map if no match
+        return result;
     }
 
     // =========================
@@ -71,13 +76,8 @@ public class ContactOperations {
     // Delete Contact by Name
     // =========================
     public static boolean deleteByName(String name) {
-
-        if (contacts.containsKey(name)) {
-            contacts.remove(name);
-            return true;
-        }
-
-        return false;
+        contacts.remove(name);
+        return true;
     }
 
     // =========================
@@ -106,12 +106,7 @@ public class ContactOperations {
     // =========================
     public static boolean updateName(String currentName, String newName) {
 
-        if (!contacts.containsKey(currentName)) {
-            return false;
-        }
-
         String telephone = contacts.get(currentName);
-
         contacts.remove(currentName);
         contacts.put(newName, telephone);
 
@@ -125,11 +120,59 @@ public class ContactOperations {
 
         for (Map.Entry<String, String> contact : contacts.entrySet()) {
 
-            if (contact.getValue().equals(currentMobile)) {
+            if (Objects.equals(contact.getValue(), currentMobile)) {
                 contact.setValue(newMobile);
                 return true;
             }
         }
         return false;
+    }
+
+    // =========================
+    // Export Contacts To CSV
+    // =========================
+    public static boolean exportContactsToPath(String filePath) {
+        try {
+            Path file = Paths.get(filePath);
+            Path parent = file.getParent();
+
+            if(parent != null && !Files.exists(parent)){
+                Files.createDirectories(parent);
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+                for (Map.Entry<String, String> entry : contacts.entrySet()) {
+                    writer.write(entry.getKey() + "," + entry.getValue());
+                    writer.newLine();
+                }
+            }
+
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    // =========================
+    // Import Contacts From CSV
+    // =========================
+    public static boolean importsContactsFromPath(String filePath) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+
+                if (parts.length == 2) {
+                    String name = parts[0].trim();
+                    String mobile = parts[1].trim();
+                    contacts.put(name, mobile);
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

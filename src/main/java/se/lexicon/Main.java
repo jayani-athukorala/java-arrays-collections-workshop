@@ -15,6 +15,8 @@ public class Main {
                 case 5 -> Menu.sortContacts();
                 case 6 -> Menu.deleteContact();
                 case 7 -> Menu.updateContact();
+                case 8 -> Menu.exportContacts();
+                case 9 -> Menu.importContacts();
                 default -> IO.println("Exiting application...");
             }
             if (chosenOption != 0) {
