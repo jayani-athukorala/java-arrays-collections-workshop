@@ -1,6 +1,8 @@
 package se.lexicon;
 
 import org.junit.jupiter.api.*;
+import se.lexicon.operations.ContactOperations;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.util.Map;

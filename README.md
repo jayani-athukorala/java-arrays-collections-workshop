@@ -46,17 +46,32 @@ You can find the workshop description here:
 ContactManagementApp/
 │
 ├─ src/main/java/se/lexicon/
-│  ├─ ContactOperations.java       # Core CRUD & CSV logic
-│  ├─ Menu.java                    # CLI menus & submenus
-│  ├─ Utility.java                 # Input validation methods
-│  └─ Main.java                    # Entry point
+│  ├─ ContactApp.java                 # Entry point (main method)
+│  ├─ operations/
+│  │  └─ ContactOperations.java      # Core CRUD + CSV logic
+│  ├─ service/
+│  │  └─ ContactService.java         # Business logic, workflows, delete/update helpers
+│  ├─ ui/
+│  │  └─ UIHandler.java              # CLI display & user interaction
+│  ├─ util/
+│  │  └─ ContactValidator.java       # Input validation, path validation, y/n prompts
+│  └─  menu/
+│     ├─ Menu.java                   # Main menu & submenus
+│     ├─ MenuTextBuilder.java        # Helper for building menu text
+│     ├─ MenuOption.java             # Interface for menu enums
+│     └─ options/                    # Menu enums
+│        ├─ MainMenuOption.java
+│        ├─ DeleteMenuOption.java
+│        ├─ UpdateMenuOption.java
+│        ├─ ExportMenuOption.java
+│        └─ ImportMenuOption.java
 ├─ src/test/java/se/lexicon/
-│  └─ ContactOperationsTest.java   # JUnit test cases
+│  └─ ContactOperationsTest.java     # Unit tests for CRUD + CSV logic
 ├─ data/
-│  ├─ imports/                     # Default CSV import folder
-│  └─ exports/                     # Default CSV export folder
-├─ Arrays-Collections-Workshop.md
-└─ README.md
+│  ├─ imports/                        # Default import CSV folder
+│  └─ exports/                        # Default export CSV folder
+├─ README.md
+└─ Arrays-Collections-Workshop.md
 ```
 ---
 ## 🛠 Available Options
